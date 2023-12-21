@@ -16,7 +16,7 @@
 <meta property="og:description" content="man info whatis touch mkdir rm rmdir mv cd pwd ls tree stat rename basename 模版    [TOC] manman命令 是Linux下的帮助指令，通过man指令可以查看Linux中的指令帮助、配置文件帮助和编程帮助等信息。">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-12-20T15:55:30.000Z">
-<meta property="article:modified_time" content="2023-12-21T04:54:53.401Z">
+<meta property="article:modified_time" content="2023-12-21T07:44:28.273Z">
 <meta property="article:author" content="naxida">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -59,8 +59,6 @@
 			<ul>
 			
 				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
 				<li><a href="/tags/%E7%8E%84%E5%AD%A6/">玄学</a></li>
 	        
@@ -130,8 +128,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -150,17 +146,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 16.666666666666668%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 16.666666666666668%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 20%"><a href="/tags/%E7%8E%84%E5%AD%A6/">玄学</a></li>
 		        
-					<li style="width: 16.666666666666668%"><a href="/tags/%E7%8E%84%E5%AD%A6/">玄学</a></li>
+					<li style="width: 20%"><a href="/tags/linux/">linux</a></li>
 		        
-					<li style="width: 16.666666666666668%"><a href="/tags/linux/">linux</a></li>
+					<li style="width: 20%"><a href="/tags/markdown/">markdown</a></li>
 		        
-					<li style="width: 16.666666666666668%"><a href="/tags/markdown/">markdown</a></li>
-		        
-					<li style="width: 16.666666666666668%"><a href="/archives/index.html">归档</a></li>
+					<li style="width: 20%"><a href="/archives/index.html">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -222,6 +216,8 @@
 <h2><span id="man">man</span></h2><p><strong>man命令</strong> 是Linux下的帮助指令，通过man指令可以查看Linux中的指令帮助、配置文件帮助和编程帮助等信息。</p>
 <span id="more"></span>
 
+
+
 <p><strong>语法</strong></p>
 <blockquote>
 <p>man(选项)(参数)</p>
@@ -257,7 +253,14 @@
 
 <p><strong>数字代表内容</strong></p>
 <blockquote>
-<p>1：用户在shell环境可操作的命令或执行文件；<br>2：系统内核可调用的函数与工具等<br>3：一些常用的函数(function)与函数库(library)，大部分为C的函数库(libc)<br>4：设备文件说明，通常在&#x2F;dev下的文件<br>5：配置文件或某些文件格式<br>6：游戏(games)<br>7：惯例与协议等，如Linux文件系统，网络协议，ASCII code等说明<br>8：系统管理员可用的管理命令<br>9：跟kernel有关的文件</p>
+<p>1：用户在shell环境可操作的命令或执行文件<br>2：系统内核可调用的函数与工具等<br>
+3：一些常用的函数(function)与函数库(library)，大部分为C的函数库(libc)<br>
+4：设备文件说明，通常在&#x2F;dev下的文件 <br>
+5：配置文件或某些文件格式 <br>
+6：游戏(games) <br>
+7：惯例与协议等，如Linux文件系统，网络协议，ASCII code等说明 <br>
+8：系统管理员可用的管理命令 <br>
+9：跟kernel有关的文件<br></p>
 </blockquote>
 <p><strong>操作</strong></p>
 <p>man man进入使用手册</p>
@@ -272,6 +275,20 @@
 <p>n匹配下一个关键词</p>
 <p>shift n匹配上一个关键词</p>
 </blockquote>
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+
+
 <h2><span id="info">info</span></h2><p><strong>info命令</strong> 是Linux下info格式的帮助指令。</p>
 <p>就内容来说，info页面比man page编写得要更好、更容易理解，也更友好，但man page使用起来确实要更容易得多。一个man page只有一页，而info页面几乎总是将它们的内容组织成多个区段（称为节点），每个区段也可能包含子区段（称为子节点）。理解这个命令的窍门就是不仅要学习如何在单独的Info页面中浏览导航，还要学习如何在节点和子节点之间切换。可能刚开始会一时很难在info页面的节点之间移动和找到你要的东西，真是具有讽刺意味：原本以为对于新手来说，某个东西比man命令会更好些，但实际上学习和使用起来更困难。</p>
 <p>一般用man</p>
@@ -283,7 +300,10 @@
 <p>帮助主题：指定需要获得帮助的主题，可以是指令、函数以及配置文件。</p>
 <p><strong>选项</strong></p>
 <blockquote>
-<p>-d：添加包含info格式帮助文档的目录；<br>-f：指定要读取的info格式的帮助文档；<br>-n：指定首先访问的info帮助文件的节点；<br>-o：输出被选择的节点内容到指定文件。</p>
+<p>-d：添加包含info格式帮助文档的目录；
+-f：指定要读取的info格式的帮助文档；
+-n：指定首先访问的info帮助文件的节点；
+-o：输出被选择的节点内容到指定文件。</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info info</span><br></pre></td></tr></table></figure>
 
@@ -293,14 +313,66 @@
 
 <p>面介绍一下它的几个常用快捷键。</p>
 <blockquote>
-<p><strong>?键：</strong> 它就会显示info的常用快捷键。<br> <strong>N键：</strong> 显示（相对于本节点的）下一节点的文档内容。<br> <strong>P键：</strong> 显示（相对于本节点的）前一节点的文档内容。<br> <strong>U键：</strong> 进入当前命令所在的主题。<br> <strong>M键：</strong> 敲M键后输入命令的名称就可以查看该命令的帮助文档了。<br> <strong>G键：</strong> 敲G键后输入主题名称，进入该主题。<br> <strong>L键：</strong> 回到上一个访问的页面。<br> <strong>SPACE键：</strong> 向前滚动一页。<br> <strong>BACKUP或DEL键：</strong> 向后滚动一页。<br> <strong>Q：</strong> 退出info。</p>
+<p><strong>?键：</strong> 它就会显示info的常用快捷键。
+ <strong>N键：</strong> 显示（相对于本节点的）下一节点的文档内容。
+ <strong>P键：</strong> 显示（相对于本节点的）前一节点的文档内容。
+ <strong>U键：</strong> 进入当前命令所在的主题。
+ <strong>M键：</strong> 敲M键后输入命令的名称就可以查看该命令的帮助文档了。
+ <strong>G键：</strong> 敲G键后输入主题名称，进入该主题。
+ <strong>L键：</strong> 回到上一个访问的页面。
+ <strong>SPACE键：</strong> 向前滚动一页。
+ <strong>BACKUP或DEL键：</strong> 向后滚动一页。
+ <strong>Q：</strong> 退出info。</p>
 </blockquote>
 <p><strong>命令</strong></p>
 <p> <strong>？</strong>      显示帮助窗口</p>
-<p>在帮助窗口中：<br> <strong>Ctrl-x 0</strong>           关闭帮助窗口<br> <strong>Ctrl-x Ctrl-c</strong>     关闭整个 Info</p>
-<p> <strong>q</strong>       退出 info<br> <strong>n</strong>       打开与本 Node 关联的下一个 Node<br> <strong>p</strong>       打开与本 Node 关联的前一个 Node<br> <strong>u</strong>       打开与本 Node 关联的上一个 Node<br> <strong>l</strong>       回到上一次访问的 Node<br> <strong>m或g</strong>    选择一个菜单项（Node 的名字）<br>       输入指定菜单的名字后按回车，打开指定菜单项关联的 Node<br> <strong>空格键</strong>  下一页（PageDown 也可以，下一页从当前页的最后两行开始算起）<br>       下一个 Node （若当前页在 Node 文档的末尾）<br> <strong>Del 键</strong>  上一页（PageUp 也可以，上一页从当前页的开始两行开始算起）<br>       上一个 Node （若当前页 Node 文档的开始）</p>
-<p> <strong>b 或 t 或 Home</strong>    文档的开始（b 是 begining 的意思）<br> <strong>e 或 End</strong>          文档的末尾（b 是 ending 的意思）<br> <strong>Ctrl-l</strong>     刷新当前页，若当前文档显示情况有问题时<br> <strong>Ctrl-g</strong>     取消所键入的指令</p>
+<p>在帮助窗口中：
+ <strong>Ctrl-x 0</strong>           关闭帮助窗口
+ <strong>Ctrl-x Ctrl-c</strong>     关闭整个 Info</p>
+<p> <strong>q</strong>       退出 info
+ <strong>n</strong>       打开与本 Node 关联的下一个 Node
+ <strong>p</strong>       打开与本 Node 关联的前一个 Node
+ <strong>u</strong>       打开与本 Node 关联的上一个 Node
+ <strong>l</strong>       回到上一次访问的 Node
+ <strong>m或g</strong>    选择一个菜单项（Node 的名字）
+       输入指定菜单的名字后按回车，打开指定菜单项关联的 Node
+ <strong>空格键</strong>  下一页（PageDown 也可以，下一页从当前页的最后两行开始算起）
+       下一个 Node （若当前页在 Node 文档的末尾）
+ <strong>Del 键</strong>  上一页（PageUp 也可以，上一页从当前页的开始两行开始算起）
+       上一个 Node （若当前页 Node 文档的开始）</p>
+<p> <strong>b 或 t 或 Home</strong>    文档的开始（b 是 begining 的意思）
+ <strong>e 或 End</strong>          文档的末尾（b 是 ending 的意思）
+ <strong>Ctrl-l</strong>     刷新当前页，若当前文档显示情况有问题时
+ <strong>Ctrl-g</strong>     取消所键入的指令</p>
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+
+
 <h2><span id="whatis">whatis</span></h2><p><strong>whatis &#x3D;&#x3D; man -f</strong></p>
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+
+
 <h2><span id="touch">touch</span></h2><p><strong>touch命令</strong> 有两个功能：一是用于把已存在文件的时间标签更新为系统当前的时间（默认方式），它们的数据将原封不动地保留下来；二是用来创建新的空文件。</p>
 <p><strong>语法</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch(选项)(参数)</span><br></pre></td></tr></table></figure>
@@ -348,6 +420,18 @@
 <p><strong>创建 <code>job1.md</code> 文件，并写入 <code>job 1</code></strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;job 1&quot; &gt; job1.md</span><br></pre></td></tr></table></figure>
 
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
 
 
 
@@ -387,6 +471,18 @@
 <p>-v显示创建过程</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ mkdir -v dir&#123;11..13&#125;</span><br><span class="line">mkdir: created directory &#x27;dir11&#x27;</span><br><span class="line">mkdir: created directory &#x27;dir12&#x27;</span><br><span class="line">mkdir: created directory &#x27;dir13&#x27;</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ ls</span><br><span class="line">d1  d10  d2  d3  d4  d5  dir1  dir11  dir12  dir13</span><br></pre></td></tr></table></figure>
+
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
 
 
 
@@ -436,6 +532,18 @@
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ ls</span><br><span class="line">d10  dir1  dir11  dir12  dir13  f2  f3  f4  f5</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ rm -rf *</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ ls</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
 
 
 <h2><span id="rmdir">rmdir</span></h2><p><strong>rmdir命令</strong> 用来删除空目录。当目录不再被使用时，或者磁盘空间已到达使用限定值，就需要删除失去使用价值的目录。利用rmdir命令可以从一个目录中删除一个或多个空的子目录。该命令从一个目录中删除一个或多个子目录，其中dirname佬表示目录名。如果dirname中没有指定路径，则删除当前目录下由dirname指定的目录；如dirname中包含路径，则删除指定位置的目录。删除目录时，必须具有对其父目录的写权限。</p>
@@ -449,6 +557,22 @@
 </ul>
 <p><strong>选项</strong></p>
 <p>​	参考rm</p>
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+
+
+
+
 <h2><span id="mv">mv</span></h2><p><strong>mv命令</strong> 用来对文件或目录重新命名，或者将文件从一个目录移到另一个目录中。source表示源文件或目录，target表示目标文件或目录。如果将一个文件移到一个已经存在的目标文件中，则目标文件的内容将被覆盖。</p>
 <p>mv命令可以用来将源文件移至一个目标文件中，或将一组文件移至一个目标目录中。源文件被移至目标文件有两种不同的结果：</p>
 <ol>
@@ -508,6 +632,22 @@
 
 
 
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+
+
 <h2><span id="cd">cd</span></h2><p><strong>cd命令</strong> 切换用户当前工作目录。</p>
 <p><strong>语法</strong></p>
 <blockquote>
@@ -519,6 +659,18 @@
 </ul>
 <p><strong>选项</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd    # 进入用户主目录；</span><br><span class="line">cd /  # 进入根目录</span><br><span class="line">cd ~  # 进入用户主目录；</span><br><span class="line">cd ..  # 返回上级目录（若当前目录为“/“，则执行完后还在“/&quot;；&quot;..&quot;为上级目录的意思）；</span><br><span class="line">cd ../..  # 返回上两级目录；</span><br><span class="line">cd !$  # 把上个命令的参数作为cd参数使用。</span><br><span class="line">cd - # 命令会首先显示要切换到的目标目录，然后再进入。</span><br><span class="line">cd $&#123;OLDPWD&#125; # 命令会直接切换到上一个工作目录。</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
 
 
 
@@ -536,6 +688,18 @@
 <p>无</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ pwd</span><br><span class="line">/home/frost/linuxcommandtry</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
 
 
 
@@ -600,6 +764,20 @@
 
 
 
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+
+
 <h2><span id="tree">tree</span></h2><p><strong>tree命令</strong> 以树状图列出目录的内容。</p>
 <p><strong>语法</strong></p>
 <blockquote>
@@ -659,6 +837,18 @@
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ tree -f d2</span><br><span class="line">d2</span><br><span class="line">├── d2/dira</span><br><span class="line">│   ├── d2/dira/1</span><br><span class="line">│   └── d2/dira/dirb</span><br><span class="line">│       └── d2/dira/dirb/2</span><br><span class="line">├── d2/f1</span><br><span class="line">└── d2/f1~</span><br><span class="line"></span><br><span class="line">2 directories, 4 files</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
 
 
 <h2><span id="stat">stat</span></h2><p><strong>stat命令</strong> 用于显示文件的状态信息。stat命令的输出信息比ls命令的输出信息要更详细。</p>
@@ -691,6 +881,18 @@
 <p>-t：以简洁方式（字符串）输出信息；</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ stat -t f1</span><br><span class="line">f1 0 0 81b4 1000 1000 805 270843 1 0 0 1702887246 1702887246 1702973646 0 4096</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
 
 
 
@@ -728,6 +930,20 @@
 
 
 
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+
+
 <h2><span id="basename">basename</span></h2><p><strong>basename命令</strong> 用于打印目录或者文件的基本名称。basename和dirname命令通常用于shell脚本中的命令替换来指定和指定的输入文件名称有所差异的输出文件名称。</p>
 <p><strong>语法</strong></p>
 <blockquote>
@@ -762,17 +978,41 @@
 
 
 
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
 
 
 <h2><span id="模版">模版</span></h2><p><strong>XX命令</strong> </p>
+<br>
+
+<br>
+
 <p><strong>语法</strong></p>
 <blockquote>
 <p>1</p>
 </blockquote>
+<br>
+
+<br>
+
 <p><strong>参数</strong></p>
 <ul>
 <li>1</li>
 </ul>
+<br>
+
+<br>
+
 <p><strong>选项</strong></p>
 <blockquote>
 <p>2</p>
@@ -814,39 +1054,19 @@
 
 
 
-      
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
 
       
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/pay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/wcmoney.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
+
       
     </div>
     <div class="article-info article-info-index">
@@ -987,6 +1207,8 @@
   
 
 
+
+
           </div>
         </div>
       </div>
@@ -1080,15 +1302,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">

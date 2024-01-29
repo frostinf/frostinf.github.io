@@ -1,0 +1,1071 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>基础命令2 | 荒岛</title><meta name="author" content="为霜"><meta name="copyright" content="为霜"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="[toc] 提取路径目录部分命令：dirnamedirname命令 去除文件名中的非目录部分，仅显示与目录有关的内容。dirname命令读取指定路径名保留最后一个&#x2F;及其后面的字符，删除其他部分，并写结果到标准输出。如果最后一个&#x2F;后无字符，dirname 命令使用倒数第二个&#x2F;，并忽略其后的所有字符。dirname 和 basename 通常在 shell 内部命令替换使用，以指定一个与指定输入文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础命令2">
+<meta property="og:url" content="http://example.com/2023/12/20/linux/basical%20instruction2/index.html">
+<meta property="og:site_name" content="荒岛">
+<meta property="og:description" content="[toc] 提取路径目录部分命令：dirnamedirname命令 去除文件名中的非目录部分，仅显示与目录有关的内容。dirname命令读取指定路径名保留最后一个&#x2F;及其后面的字符，删除其他部分，并写结果到标准输出。如果最后一个&#x2F;后无字符，dirname 命令使用倒数第二个&#x2F;，并忽略其后的所有字符。dirname 和 basename 通常在 shell 内部命令替换使用，以指定一个与指定输入文">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/lm.jpg">
+<meta property="article:published_time" content="2023-12-20T15:55:40.000Z">
+<meta property="article:modified_time" content="2024-01-18T03:56:13.339Z">
+<meta property="article:author" content="为霜">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/lm.jpg"><link rel="shortcut icon" href="/img/firework.png"><link rel="canonical" href="http://example.com/2023/12/20/linux/basical%20instruction2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '基础命令2',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-18 11:56:13'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 7.1.1"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/loading.gif" data-original="/img/lm.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/zl.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="荒岛"><span class="site-name">荒岛</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">基础命令2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-20T15:55:40.000Z" title="发表于 2023-12-20 23:55:40">2023-12-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-18T03:56:13.339Z" title="更新于 2024-01-18 11:56:13">2024-01-18</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="基础命令2"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><!-- toc -->
+
+<p>[toc]</p>
+<h2 id="提取路径目录部分命令：dirname"><a href="#提取路径目录部分命令：dirname" class="headerlink" title="提取路径目录部分命令：dirname"></a>提取路径目录部分命令：dirname</h2><p><strong>dirname命令</strong> 去除文件名中的非目录部分，仅显示与目录有关的内容。dirname命令读取指定路径名保留最后一个<code>/</code>及其后面的字符，删除其他部分，并写结果到标准输出。如果最后一个<code>/</code>后无字符，dirname 命令使用倒数第二个<code>/</code>，并忽略其后的所有字符。dirname 和 basename 通常在 shell 内部命令替换使用，以指定一个与指定输入文件名略有差异的输出文件名。</p>
+<span id="more"></span>
+
+<p><strong>语法</strong></p>
+<blockquote>
+<p>dirname 路径</p>
+</blockquote>
+<p><strong>参数</strong></p>
+<ul>
+<li>无</li>
+</ul>
+<p><strong>选项</strong></p>
+<blockquote>
+<p>无</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ dirname /usr/bin/cat</span><br><span class="line">/usr/bin</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ dirname //</span><br><span class="line">/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ dirname d1</span><br><span class="line">.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+<h2 id="修改-查看文件属性命令：chattr-lsattr"><a href="#修改-查看文件属性命令：chattr-lsattr" class="headerlink" title="修改_查看文件属性命令：chattr_lsattr"></a>修改_查看文件属性命令：chattr_lsattr</h2><p><strong>chattr命令</strong> 用来改变文件属性。这项指令可改变存放在ext2文件系统上的文件或目录属性</p>
+<p><strong>语法</strong></p>
+<blockquote>
+<p>chattr (选项) 文件名</p>
+</blockquote>
+<p><strong>选项</strong></p>
+<blockquote>
+<p>i：不得任意更动文件或目录；</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ lsattr f1.txt </span><br><span class="line">--------------e----- f1.txt</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ sudo chattr +i f1.txt </span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ lsattr f1.txt </span><br><span class="line">----i---------e----- f1.txt</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ rm f1.txt </span><br><span class="line">rm: cannot remove &#x27;f1.txt&#x27;: Operation not permitted</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ echo 11 &gt;&gt; f1.txt </span><br><span class="line">-bash: f1.txt: Operation not permitted</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ sudo chattr -i f1.txt </span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ lsattr  f1.txt </span><br><span class="line">--------------e----- f1.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>lsattr看文件权限</p>
+<blockquote>
+<p>a：让文件或目录仅供附加用途；</p>
+<p>b：不更新文件或目录的最后存取时间；</p>
+<p>c：将文件或目录压缩后存放；</p>
+<p>d：将文件或目录排除在倾倒操作之外；</p>
+<p>i：不得任意更动文件或目录；</p>
+<p>s：保密性删除文件或目录；</p>
+<p>S：即时更新文件或目录；</p>
+<p>u：预防意外删除。</p>
+</blockquote>
+<blockquote>
+<p>-R：递归处理，将指令目录下的所有文件及子目录一并处理；</p>
+<p>-v&lt;版本编号&gt;：设置文件或目录版本；</p>
+<p>-V：显示指令执行过程；</p>
+<p>+&lt;属性&gt;：开启文件或目录的该项属性；</p>
+<p>-&lt;属性&gt;：关闭文件或目录的该项属性；</p>
+<p>&#x3D;&lt;属性&gt;：指定文件或目录的该项属性。</p>
+</blockquote>
+<p>这里不一一列举</p>
+<p>改一个目录下所有文件权限</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ sudo chattr -R +i d2/*</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ lsattr d2/*</span><br><span class="line">----i---------e----- d2/dira/1</span><br><span class="line">----i---------e----- d2/dira/dirb</span><br><span class="line">----i---------e----- d2/f1</span><br><span class="line">----i---------e----- d2/f1~</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+
+
+<h2 id="识别文件类型命令：file"><a href="#识别文件类型命令：file" class="headerlink" title="识别文件类型命令：file"></a>识别文件类型命令：file</h2><p><strong>file命令</strong> 用来探测给定文件的类型。file命令对文件的检查分为文件系统、魔法幻数检查和语言检查3个过程。</p>
+<p><strong>语法</strong></p>
+<blockquote>
+<p>file(选项)(参数)</p>
+</blockquote>
+<p><strong>参数</strong></p>
+<ul>
+<li>文件：要确定类型的文件列表，多个文件之间使用空格分开，可以使用shell通配符匹配多个文件。</li>
+</ul>
+<p><strong>选项</strong></p>
+<blockquote>
+<p>无</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ ls</span><br><span class="line">d1  d2  d3  d4  d5  f1.txt  f2  f3</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ file f1.txt </span><br><span class="line">f1.txt: empty</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ file d1</span><br><span class="line">d1: directory</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ file /dev/sda</span><br><span class="line">/dev/sda: block special (8/0)</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-i 详细信息</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ file -i f1.txt </span><br><span class="line">f1.txt: inode/x-empty; charset=binary</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-b：列出辨识结果时，不显示文件名称；</p>
+<p>-c：详细显示指令执行过程，便于排错或分析程序执行的情形；</p>
+<p>-f&lt;名称文件&gt;：指定名称文件，其内容有一个或多个文件名称时，让file依序辨识这些文件，格式为每列一个文件名称；</p>
+<p>-L：直接显示符号连接所指向的文件类别；</p>
+<p>-m&lt;魔法数字文件&gt;：指定魔法数字文件；</p>
+<p>-v：显示版本信息；</p>
+<p>-z：尝试去解读压缩文件的内容。</p>
+</blockquote>
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+<h2 id="生成和校验文件的md5值命令：md5sum"><a href="#生成和校验文件的md5值命令：md5sum" class="headerlink" title="生成和校验文件的md5值命令：md5sum"></a>生成和校验文件的md5值命令：md5sum</h2><p><strong>md5sum命令</strong> 采用MD5报文摘要算法（128位）计算和检查文件的校验和。一般来说，安装了Linux后，就会有md5sum这个工具，直接在命令行终端直接运行。</p>
+<p><strong>语法</strong></p>
+<blockquote>
+<p>md5sum(选项)(参数)</p>
+</blockquote>
+<p><strong>参数</strong></p>
+<ul>
+<li>文件：指定保存着文件名和校验和的文本文件。</li>
+</ul>
+<p><strong>选项</strong></p>
+<blockquote>
+<p>–status：验证成功时不输出任何信息； </p>
+</blockquote>
+<br>
+
+<br>
+
+<blockquote>
+<p>使用 <strong>md5sum 生成密码</strong></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ md5sum f1.txt </span><br><span class="line">d41d8cd98f00b204e9800998ecf8427e  f1.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-b：二进制模式读取文件；</p>
+<p>-t或–text：把输入的文件作为文本文件看待；</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ md5sum -b f1.txt </span><br><span class="line">d41d8cd98f00b204e9800998ecf8427e *f1.txt</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ md5sum -t f1.txt </span><br><span class="line">d41d8cd98f00b204e9800998ecf8427e  f1.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>检查文件testfile是否被修改过：</strong></p>
+<blockquote>
+<p>首先生成md5文件：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ md5sum -t f1.txt  &gt; f1.md5</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ ls</span><br><span class="line">d1  d2  d3  d4  d5  f1.md5  f1.txt  f2  f3</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>检查： </p>
+<p>-c：从指定文件中读取MD5校验和，并进行校验；</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ md5sum -c f1.md5 </span><br><span class="line">f1.txt: OK</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p> –status：验证成功时不输出任何信息； </p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ md5sum -c --status f1.md5 </span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ echo $?</span><br><span class="line">0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>0为正确 1为错误</p>
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+<h2 id="查找目录或文件命令：find"><a href="#查找目录或文件命令：find" class="headerlink" title="查找目录或文件命令：find"></a>查找目录或文件命令：find</h2><p><strong>find命令</strong> 用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则find命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。</p>
+<p><strong>语法</strong></p>
+<blockquote>
+<p>find(选项)(参数)</p>
+</blockquote>
+<p><strong>参数</strong></p>
+<ul>
+<li>起始目录：查找文件的起始目录。</li>
+</ul>
+<p><strong>选项</strong></p>
+<blockquote>
+<p>-name 按名字查找</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ sudo find /home/frost/linuxcommandtry -name *.txt</span><br><span class="line">/home/frost/linuxcommandtry/f1.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-size 按大小查找</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ find ./ -size +1k</span><br><span class="line">./</span><br><span class="line">./d4</span><br><span class="line">./d2</span><br><span class="line">./d2/dira</span><br><span class="line">./d2/dira/dirb</span><br><span class="line">./d5</span><br><span class="line">./d1</span><br><span class="line">./d3</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>大于1k的文件</p>
+<blockquote>
+<p>-user 按属于用户的文件搜索</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ find ./d2 -user frost</span><br><span class="line">./d2</span><br><span class="line">./d2/.f3</span><br><span class="line">./d2/f1~</span><br><span class="line">./d2/dira</span><br><span class="line">./d2/dira/1</span><br><span class="line">./d2/dira/dirb</span><br><span class="line">./d2/dira/dirb/2</span><br><span class="line">./d2/f1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-type 搜索目录下所有文件 f文件 d文件夹</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ find . -type f</span><br><span class="line">./f2</span><br><span class="line">./f1.txt</span><br><span class="line">./f1.md5</span><br><span class="line">./d2/.f3</span><br><span class="line">./d2/f1~</span><br><span class="line">./d2/dira/1</span><br><span class="line">./d2/dira/dirb/2</span><br><span class="line">./d2/f1</span><br><span class="line">./f3</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ find . -type d</span><br><span class="line">.</span><br><span class="line">./d4</span><br><span class="line">./d2</span><br><span class="line">./d2/dira</span><br><span class="line">./d2/dira/dirb</span><br><span class="line">./d5</span><br><span class="line">./d1</span><br><span class="line">./d3</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-perm 按权限查找</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ find . -perm 775 </span><br><span class="line">.</span><br><span class="line">./d4</span><br><span class="line">./d2</span><br><span class="line">./d2/dira</span><br><span class="line">./d2/dira/dirb</span><br><span class="line">./d5</span><br><span class="line">./d1</span><br><span class="line">./d3</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>加上-exec ls -l {} ; 可以查看详细信息，前面的作为参数传递给{}；</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ find . -perm 775 -exec ls -l &#123;&#125; \;</span><br><span class="line">total 24</span><br><span class="line">drwxrwxr-x 2 frost frost 4096 Dec 19 16:38 d1</span><br><span class="line">drwxrwxr-x 3 frost frost 4096 Dec 19 16:42 d2</span><br><span class="line">drwxrwxr-x 2 frost frost 4096 Dec 19 16:04 d3</span><br><span class="line">drwxrwxr-x 2 frost frost 4096 Dec 19 15:58 d4</span><br><span class="line">drwxrwxr-x 2 frost frost 4096 Dec 19 15:58 d5</span><br><span class="line">-rw-rw-r-- 1 frost frost   41 Dec 20 15:35 f1.md5</span><br><span class="line">-rw-rw-r-- 1 frost frost    0 Dec 18 16:14 f1.txt</span><br><span class="line">-rw-rw-r-- 1 frost frost    0 Dec 19 16:04 f2</span><br><span class="line">-rw-rw-r-- 1 frost frost    0 Dec 19 16:04 f3</span><br><span class="line">total 0</span><br><span class="line">total 4</span><br><span class="line">drwxrwxr-x 3 frost frost 4096 Dec 19 16:43 dira</span><br><span class="line">-rw-rw-r-- 1 frost frost    0 Dec 19 16:09 f1</span><br><span class="line">-rw-rw-r-- 1 frost frost    0 Dec 19 16:06 f1~</span><br><span class="line">total 4</span><br><span class="line">-rw-rw-r-- 1 frost frost    0 Dec 19 16:43 1</span><br><span class="line">drwxrwxr-x 2 frost frost 4096 Dec 19 16:43 dirb</span><br><span class="line">total 0</span><br><span class="line">-rw-rw-r-- 1 frost frost 0 Dec 19 16:43 2</span><br><span class="line">total 0</span><br><span class="line">total 0</span><br><span class="line">total 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-i 查找不区分大小写</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ find . -iname &#x27;*.txt&#x27;</span><br><span class="line">./f1.txt</span><br><span class="line">./f2.TXT</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>!  查找不符合搜索条件的文件</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ find . ! -iname  &#x27;d*&#x27;</span><br><span class="line">.</span><br><span class="line">./f1.txt</span><br><span class="line">./f2.TXT</span><br><span class="line">./f1.md5</span><br><span class="line">./d2/.f3</span><br><span class="line">./d2/f1~</span><br><span class="line">./d2/dira/1</span><br><span class="line">./d2/dira/dirb/2</span><br><span class="line">./d2/f1</span><br><span class="line">./f3</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-mtime 搜索在修改时间内的文件</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ find ./d2 -mtime -7 </span><br><span class="line">./d2</span><br><span class="line">./d2/.f3</span><br><span class="line">./d2/f1~</span><br><span class="line">./d2/dira</span><br><span class="line">./d2/dira/1</span><br><span class="line">./d2/dira/dirb</span><br><span class="line">./d2/dira/dirb/2</span><br><span class="line">./d2/f1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>修改时间在七天内的文件</p>
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+
+
+<h2 id="搜索命令位置命令：which"><a href="#搜索命令位置命令：which" class="headerlink" title="搜索命令位置命令：which"></a>搜索命令位置命令：which</h2><p><strong>which命令</strong> 用于查找并显示给定命令的绝对路径，环境变量PATH中保存了查找命令时需要遍历的目录。which指令会在环境变量$PATH设置的目录里查找符合条件的文件。也就是说，使用which命令，就可以看到某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</p>
+<p><strong>语法</strong></p>
+<blockquote>
+<p>which(选项)(参数)</p>
+</blockquote>
+<p><strong>参数</strong></p>
+<ul>
+<li>指令名：指令名列表。</li>
+</ul>
+<p><strong>选项</strong></p>
+<blockquote>
+<p>无</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ echo $PATH </span><br><span class="line">/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ which ls</span><br><span class="line">/usr/bin/ls</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ which man</span><br><span class="line">/usr/bin/man</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+
+
+<h2 id="查找文件命令：whereis"><a href="#查找文件命令：whereis" class="headerlink" title="查找文件命令：whereis"></a>查找文件命令：whereis</h2><p><strong>whereis命令</strong> 用来定位指令的二进制程序、源代码文件和man手册页等相关文件的路径。</p>
+<p>whereis命令只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息。</p>
+<p>和find相比，whereis查找的速度非常快，这是因为linux系统会将 系统内的所有文件都记录在一个数据库文件中，当使用whereis和下面即将介绍的locate时，会从数据库中查找数据，而不是像find命令那样，通 过遍历硬盘来查找，效率自然会很高。 但是该数据库文件并不是实时更新，默认情况下时一星期更新一次，因此，我们在用whereis和locate 查找文件时，有时会找到已经被删除的数据，或者刚刚建立文件，却无法查找到，原因就是因为数据库文件没有被更新。</p>
+<p><strong>语法</strong></p>
+<blockquote>
+<p>whereis(选项)(参数)</p>
+</blockquote>
+<p><strong>参数</strong></p>
+<ul>
+<li>指令名：要查找的二进制程序、源文件和man手册页的指令名。</li>
+</ul>
+<p><strong>选项</strong></p>
+<blockquote>
+<p>-b：只查找二进制文件；</p>
+<p>-m：只查找说明文件；</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ whereis ls</span><br><span class="line">ls: /usr/bin/ls /usr/share/man/man1/ls.1.gz</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ whereis -b ls</span><br><span class="line">ls: /usr/bin/ls</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ whereis -m ls</span><br><span class="line">ls: /usr/share/man/man1/ls.1.gz</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+<h2 id="查找符合条件的文档命令：locate"><a href="#查找符合条件的文档命令：locate" class="headerlink" title="查找符合条件的文档命令：locate"></a>查找符合条件的文档命令：locate</h2><p><strong>locate命令</strong> 比 find 好用的文件查找工具</p>
+<p>需要sudo apt install mlocate</p>
+<p><strong>语法</strong></p>
+<blockquote>
+<p>locate (参数) (文件)</p>
+</blockquote>
+<p><strong>参数</strong></p>
+<ul>
+<li>-i 不区分大小写</li>
+</ul>
+<p><strong>选项</strong></p>
+<blockquote>
+<p>无</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ locate f1.txt </span><br><span class="line">/home/frost/linuxcommandtry/f1.txt</span><br><span class="line"></span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ locate whereis</span><br><span class="line">/snap/core20/1974/usr/bin/whereis</span><br><span class="line">/snap/core20/1974/usr/share/bash-completion/completions/whereis</span><br><span class="line">/snap/core20/2015/usr/bin/whereis</span><br><span class="line">/snap/core20/2015/usr/share/bash-completion/completions/whereis</span><br><span class="line">/snap/core22/1033/usr/bin/whereis</span><br><span class="line">/snap/core22/1033/usr/share/bash-completion/completions/whereis</span><br><span class="line">/snap/core22/864/usr/bin/whereis</span><br><span class="line">/snap/core22/864/usr/share/bash-completion/completions/whereis</span><br><span class="line">/usr/bin/whereis</span><br><span class="line">/usr/share/bash-completion/completions/whereis</span><br><span class="line">/usr/share/man/man1/whereis.1.gz</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ locate linuxcommandtry/f</span><br><span class="line">/home/frost/linuxcommandtry/f1.md5</span><br><span class="line">/home/frost/linuxcommandtry/f1.txt</span><br><span class="line">/home/frost/linuxcommandtry/f2.TXT</span><br><span class="line">/home/frost/linuxcommandtry/f3</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+<h2 id="改变文件所属用户或组命令：chown"><a href="#改变文件所属用户或组命令：chown" class="headerlink" title="改变文件所属用户或组命令：chown"></a>改变文件所属用户或组命令：chown</h2><p><strong>chown命令</strong> 改变某个文件或目录的所有者和所属的组，该命令可以向某个用户授权，使该用户变成指定文件的所有者或者改变文件所属的组。用户可以是用户或者是用户D，用户组可以是组名或组id。文件名可以使由空格分开的文件列表，在文件名中可以包含通配符。</p>
+<p>只有文件主和超级用户才可以使用该命令。</p>
+<p><strong>语法</strong></p>
+<blockquote>
+<p>chown(选项)(参数)</p>
+</blockquote>
+<p><strong>参数</strong></p>
+<ul>
+<li>用户：组：指定所有者和所属工作组。当省略“：组”，仅改变文件所有者；</li>
+<li>文件：指定要改变所有者和工作组的文件列表。支持多个文件和目标，支持shell通配符。</li>
+</ul>
+<p><strong>选项</strong></p>
+<blockquote>
+<p>用户：用户组</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ sudo chown frost:frost f1.txt </span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ sudo chown frost f1.txt </span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ sudo chown :frost f1.txt </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-c 打印过程</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ sudo chown -c frost:frost f1.txt </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>因为改的还是这个用户和用户组，所以不会打印内容</p>
+<blockquote>
+<p>-R 递归处理，将文件夹下所又文件更改权限</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ chown -R frost:frost d2</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里报错chmod: changing permissions of ‘d2&#x2F;f1~’: Operation not permitted</p>
+<p>后来发现是前面chattr改了+i，然后 sudo chattr -i -R d2就好了</p>
+<p>看来root也不是万能的哈哈</p>
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+<h2 id="改变文件或目录所属组：chgrp"><a href="#改变文件或目录所属组：chgrp" class="headerlink" title="改变文件或目录所属组：chgrp"></a>改变文件或目录所属组：chgrp</h2><p><strong>chgrp命令</strong> 用来改变文件或目录所属的用户组。该命令用来改变指定文件所属的用户组。其中，组名可以是用户组的id，也可以是用户组的组名。文件名可以 是由空格分开的要改变属组的文件列表，也可以是由通配符描述的文件集合。如果用户不是该文件的文件主或超级用户(root)，则不能改变该文件的组。</p>
+<p><strong>语法</strong></p>
+<blockquote>
+<p>chgrp [选项 ] [组群] [文件|目录]</p>
+</blockquote>
+<p><strong>参数</strong></p>
+<ul>
+<li>1</li>
+</ul>
+<p><strong>选项</strong></p>
+<blockquote>
+<p>无</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ sudo chgrp u2 f1.txt </span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ ll f1.txt </span><br><span class="line">-rw-rw-r-- 1 frost u2 0 Dec 18 16:14 f1.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-v 显示改变过程</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ sudo chgrp -v frost f1.txt </span><br><span class="line">changed group of &#x27;f1.txt&#x27; from u2 to frost</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>–reference&#x3D;* 参考文件的用户组修改</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ sudo chgrp --reference=f1.txt -v f3</span><br><span class="line">changed group of &#x27;f3&#x27; from frost to u2</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ ll f3</span><br><span class="line">-rw-rw-r-- 1 frost u2 0 Dec 19 16:04 f3</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-R 递归修改</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ sudo chgrp -R u2 d1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+<h2 id="改变用户对文件或目录的权限：chmod"><a href="#改变用户对文件或目录的权限：chmod" class="headerlink" title="改变用户对文件或目录的权限：chmod"></a>改变用户对文件或目录的权限：chmod</h2><p><strong>chmod命令</strong>：用来变更文件或目录的权限 </p>
+<p>对象：</p>
+<table>
+<thead>
+<tr>
+<th align="center">user</th>
+<th align="center">group</th>
+<th align="center">others</th>
+<th align="center">all</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">u</td>
+<td align="center">g</td>
+<td align="center">o</td>
+<td align="center">a</td>
+</tr>
+</tbody></table>
+<p>操作：</p>
+<table>
+<thead>
+<tr>
+<th align="center">增加权限</th>
+<th align="center">去除权限</th>
+<th align="center">设置权限</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">+</td>
+<td align="center">-</td>
+<td align="center">&#x3D;</td>
+</tr>
+</tbody></table>
+<p>权限：</p>
+<table>
+<thead>
+<tr>
+<th align="center">读</th>
+<th align="center">写</th>
+<th align="center">执行</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">r</td>
+<td align="center">w</td>
+<td align="center">x</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<p>eg:chmod u+r,u+w,g+x,o+r file.txt</p>
+<pre><code> chmod 755 test.sh
+</code></pre>
+<p><strong>语法</strong></p>
+<blockquote>
+<p>chmod [OPTION]… MODE[,MODE]… FILE… </p>
+<p>chmod [OPTION]… OCTAL-MODE FILE… </p>
+<p>chmod [OPTION]… –reference&#x3D;RFILE FILE…</p>
+</blockquote>
+<p><strong>参数</strong></p>
+<ul>
+<li>mode：八进制数或符号组合。</li>
+<li>file：指定要更改权限的一到多个文件。</li>
+</ul>
+<p><strong>选项</strong></p>
+<blockquote>
+<p>用数字</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ ll f3</span><br><span class="line">-rw-rw-r-- 1 frost frost 0 Dec 19 16:04 f3</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ sudo chmod 776 f3</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ ll f3</span><br><span class="line">-rwxrwxrw- 1 frost frost 0 Dec 19 16:04 f3*</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>用英文</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ ll f3</span><br><span class="line">-rwxrwxrw- 1 frost frost 0 Dec 19 16:04 f3*</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ sudo chmod ug-x,o-w f3</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ ll f3</span><br><span class="line">-rw-rw-r-- 1 frost frost 0 Dec 19 16:04 f3</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-R递归</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ sudo chmod 666 -R d1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+<h2 id="文本搜索工具：grep"><a href="#文本搜索工具：grep" class="headerlink" title="文本搜索工具：grep"></a>文本搜索工具：grep</h2><p><strong>grep</strong> （global search regular expression(RE) and print out the line，全面搜索正则表达式并把行打印出来）是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。用于过滤&#x2F;搜索的特定字符。可使用正则表达式能配合多种命令使用，使用上十分灵活。</p>
+<p><strong>语法</strong></p>
+<blockquote>
+<p>grep (关键词) (选项) (文件)</p>
+</blockquote>
+<p><strong>参数</strong></p>
+<ul>
+<li>1</li>
+</ul>
+<p><strong>选项</strong></p>
+<blockquote>
+<p>在文件中搜索关键词</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~$ grep frost /etc/passwd</span><br><span class="line">frost:x:1000:1000:frost,,,:/home/frost:/bin/bash</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以同时搜索多个文件</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~$ sudo grep frost /etc/passwd /etc/shadow</span><br><span class="line">[sudo] password for frost: </span><br><span class="line">/etc/passwd:frost:x:1000:1000:frost,,,:/home/frost:/bin/bash</span><br><span class="line">/etc/shadow:frost:$6$Uk2PF2TeuMOxOzgJ$pCMgK2G8smOZJRYxi3pb3y.PRVocnwnZg2Ku8DvABSghg..a.XxgYcnfYCFnaYIepp0BA577WeG1SWLtGfbkV0:19555:0:99999:7:::</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-h 不显示文件名称</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~$ sudo grep -h frost /etc/passwd /etc/shadow</span><br><span class="line">frost:x:1000:1000:frost,,,:/home/frost:/bin/bash</span><br><span class="line">frost:$6$Uk2PF2TeuMOxOzgJ$pCMgK2G8smOZJRYxi3pb3y.PRVocnwnZg2Ku8DvABSghg..a.XxgYcnfYCFnaYIepp0BA577WeG1SWLtGfbkV0:19555:0:99999:7:::</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-rl 递归搜索，不仅搜索指定目录，还搜索其子目录内是否有关键词文件</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ grep -rl hello *</span><br><span class="line">f1.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-l 仅搜索指定目录，还搜索其子目录内是否有关键词文件</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ grep -l hello *</span><br><span class="line">grep: d1: Is a directory</span><br><span class="line">grep: d2: Is a directory</span><br><span class="line">grep: d3: Is a directory</span><br><span class="line">grep: d4: Is a directory</span><br><span class="line">grep: d5: Is a directory</span><br><span class="line">f1.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>-c 输出在某个文件中，包含某个关键词行的数量</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ sudo grep -c root /etc/passwd /etc/shadow</span><br><span class="line">/etc/passwd:2</span><br><span class="line">/etc/shadow:1xxxxxxxxxx 1frost@frost-virtual-machine:~/linuxcommandtry$ sudo grep -c root /etc/passwd /etc/shadow/etc/passwd:2/etc/shadow:1</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-i 大小写都可以</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ grep FroSt -i /etc/passwd</span><br><span class="line">frost:x:1000:1000:frost,,,:/home/frost:/bin/bash</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>-n 显示在文件哪一行找到的</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ grep frosT -in /etc/passwd</span><br><span class="line">47:frost:x:1000:1000:frost,,,:/home/frost:/bin/bash</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>-v 反向查找文件内容，即除了所输入的内容打印其余的内容</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat f1.txt </span><br><span class="line">hello</span><br><span class="line">111</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ grep -v hello ./f1.txt </span><br><span class="line">111</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-x 精确匹配到某个关键词的内容</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat f2.txt</span><br><span class="line">hello world</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat f1.txt </span><br><span class="line">hello</span><br><span class="line">hello world</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ grep -x hello f1.txt </span><br><span class="line">hello</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ grep -x hello f2.txt </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-q 判断某个文件中是否包含某个关键词，通过返回状态输出结果（0为包含，1为不包含），方便shell脚本使用</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat f3.txt </span><br><span class="line">hi</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat f1.txt </span><br><span class="line">hello</span><br><span class="line">hello world</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ grep -q hello f2.txt </span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ echo $?</span><br><span class="line">0</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ grep -q hello f3.txt </span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ echo $?</span><br><span class="line">1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+<h2 id="文件内查找指定字符串命令：egrep"><a href="#文件内查找指定字符串命令：egrep" class="headerlink" title="文件内查找指定字符串命令：egrep"></a>文件内查找指定字符串命令：egrep</h2><p><strong>egrep命令</strong> 用于在文件内查找指定的字符串。egrep执行效果与<code>grep -E</code>相似，使用的语法及参数可参照grep指令，与grep的不同点在于解读字符串的方法。egrep是用extended regular expression语法来解读的，而grep则用basic regular expression 语法解读，extended regular expression比basic regular expression的表达更规范。</p>
+<p>包含了正则表达式的语法</p>
+<p><strong>语法</strong></p>
+<blockquote>
+<p>egrep(选项)(查找模式)(文件名1，文件名2，……)</p>
+</blockquote>
+<p><strong>选项</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat f1.txt </span><br><span class="line">hello</span><br><span class="line">hello world</span><br><span class="line">55 666 888</span><br><span class="line">li nux</span><br><span class="line">linuxlinux</span><br><span class="line">linuxlinuxlinux</span><br><span class="line">#world </span><br><span class="line">abab</span><br><span class="line">ababab</span><br><span class="line">abc</span><br><span class="line">abd</span><br><span class="line">abe</span><br><span class="line">linux hello</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>包含一个或以上的‘a’内容</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ egrep &#x27;a+&#x27; f1.txt </span><br><span class="line">abab</span><br><span class="line">ababab</span><br><span class="line">abc</span><br><span class="line">abd</span><br><span class="line">abe</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>|     或</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ egrep &#x27;linux|666&#x27; f1.txt </span><br><span class="line">55 666 888</span><br><span class="line">linuxlinux</span><br><span class="line">linuxlinuxlinux</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>()      包含linux整体的内容</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ egrep &#x27;(linux)&#x27; f1.txt </span><br><span class="line">linuxlinux</span><br><span class="line">linuxlinuxlinux</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>(){2}        包含多个linux整体内容</p>
+<p>()+            包含一个或多个linux的内容</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ egrep &#x27;(linux)+&#x27; f1.txt </span><br><span class="line">linuxlinux</span><br><span class="line">linuxlinuxlinux</span><br><span class="line">linux hello</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ egrep &#x27;(linux)&#123;2&#125;&#x27; f1.txt </span><br><span class="line">linuxlinux</span><br><span class="line">linuxlinuxlinux</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>^#       以#为开头的内容</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ egrep &#x27;^#&#x27; f1.txt </span><br><span class="line">#world </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>linux$     以linux结尾的内容</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ egrep &#x27;^#&#x27; f1.txt </span><br><span class="line">#world </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>[cd]  查询包含c或d的内容</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ egrep &#x27;ab[cd]&#x27; f1.txt </span><br><span class="line">abc</span><br><span class="line">abd</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+<h2 id="查看文本内容命令：cat"><a href="#查看文本内容命令：cat" class="headerlink" title="查看文本内容命令：cat"></a>查看文本内容命令：cat</h2><p><strong>cat命令</strong> 连接多个文件并打印到标准输出。</p>
+<p><strong>语法</strong></p>
+<blockquote>
+<p>cat [OPTION]… [FILE]…</p>
+</blockquote>
+<p><strong>参数</strong></p>
+<ul>
+<li>FILE（可选）：要处理的文件，可以为一或多个。</li>
+</ul>
+<p><strong>选项</strong></p>
+<blockquote>
+<p>无	查看文件内容</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat f2.txt </span><br><span class="line">hello world</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat f2.txt  f3.txt </span><br><span class="line">hello world</span><br><span class="line">hi</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-n 显示行数</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat -n f1.txt </span><br><span class="line">     1  hello</span><br><span class="line">     2  hello world</span><br><span class="line">     3  </span><br><span class="line">     4  </span><br><span class="line">     5  55 666 888</span><br><span class="line">     6  li nux</span><br><span class="line">     7  linuxlinu</span><br><span class="line">     8  </span><br><span class="line">     9  x</span><br><span class="line">    10  linuxlinuxlinux</span><br><span class="line">    11  #world</span><br><span class="line">    12  </span><br><span class="line">    13  linux hello</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-s 去除重复的空行</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat -s f1.txt </span><br><span class="line">hello</span><br><span class="line">hello world</span><br><span class="line"></span><br><span class="line">55 666 888</span><br><span class="line">li nux</span><br><span class="line">linuxlinu</span><br><span class="line"></span><br><span class="line">x</span><br><span class="line">linuxlinuxlinux</span><br><span class="line">#world</span><br><span class="line"></span><br><span class="line">linux hello</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-b 显示行数（空行不编号）</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat -b f1.txt </span><br><span class="line">     1  hello</span><br><span class="line">     2  hello world</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     3  55 666 888</span><br><span class="line">     4  li nux</span><br><span class="line">     5  linuxlinu</span><br><span class="line"></span><br><span class="line">     6  x</span><br><span class="line">     7  linuxlinuxlinux</span><br><span class="line">     8  #world</span><br><span class="line"></span><br><span class="line">     9  linux hello</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-E 每行末尾显示$</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat -E f1.txt</span><br><span class="line">hello$</span><br><span class="line">hello world$</span><br><span class="line">$</span><br><span class="line">$</span><br><span class="line">55 666 888$</span><br><span class="line">li nux$</span><br><span class="line">        linuxlinu$</span><br><span class="line">$</span><br><span class="line">x$</span><br><span class="line">linuxlinuxlinux$</span><br><span class="line">#world$</span><br><span class="line">$</span><br><span class="line">linux hello$</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>-T 显示Tab 以^I  </p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat -T f1.txt </span><br><span class="line">hello</span><br><span class="line">hello world</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">55 666 888</span><br><span class="line">li nux</span><br><span class="line">^Ilinuxlinu</span><br><span class="line"></span><br><span class="line">x</span><br><span class="line">linuxlinuxlinux</span><br><span class="line">#world</span><br><span class="line"></span><br><span class="line">linux hello</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat f2.txt </span><br><span class="line">hello world</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat f3.txt </span><br><span class="line">hi</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>重定向文件内容</p>
+<p>cat file.txt &gt; file1.txt 如果file1.txt不存在，则创建，并且内容会覆盖</p>
+<p>cat file.txt &gt;&gt; file1.txt 如果file1.txt不存在，则创建，并且内容会追加到尾部</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1rost@frost-virtual-machine:~/linuxcommandtry$ cat f2.txt &gt; f4.txt</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat f4.txt </span><br><span class="line">hello world</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat f3.txt &gt;&gt; f4.txt </span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat f4.txt </span><br><span class="line">hello world</span><br><span class="line">hi</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>将file1.txt 和file2.txt合并到一个文件</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat f3.txt f4.txt &gt; f5.txt</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ ls</span><br><span class="line">d1  d2  d3  d4  d5  f1.txt  f2.txt  f3.txt  f4.txt  f5.txt</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat f5.txt </span><br><span class="line">hi</span><br><span class="line">hello world</span><br><span class="line">hi</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>使用cat创建文件（按键Enter入文本，完成后按CTRL+D保存文件）</p>
+<p>(&gt;&gt;)也可以，就是续写</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ cat &gt; f6.txt</span><br><span class="line">awdawda</span><br><span class="line">awdawd</span><br><span class="line">awdaw</span><br><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ ls</span><br><span class="line">d1  d2  d3  d4  d5  f1.txt  f2.txt  f3.txt  f4.txt  f5.txt  f6.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+<h2 id="逐页阅读文本命令：more"><a href="#逐页阅读文本命令：more" class="headerlink" title="逐页阅读文本命令：more"></a>逐页阅读文本命令：more</h2><p><strong>more命令</strong> 是一个基于vi编辑器文本过滤器，它以全屏幕的方式按页显示文本文件的内容，支持vi中的关键字定位操作。more名单中内置了若干快捷键，常用的有H（获得帮助信息），Enter（向下翻滚一行），空格（向下滚动一屏），Q（退出命令）。</p>
+<p><strong>语法</strong></p>
+<blockquote>
+<p>more(语法)(参数)</p>
+</blockquote>
+<p><strong>参数</strong></p>
+<ul>
+<li>文件：指定分页显示内容的文件。</li>
+</ul>
+<p><strong>选项</strong></p>
+<blockquote>
+<p>无 分页显示指定的文本文件内容</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ more ~/.bashrc </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>按空格翻页</p>
+<p>不能回翻</p>
+<blockquote>
+<p>-c 先进行清屏操作，随后以10行内容格式显示指定的文本文件内容</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ more -c -10 ~/.bashrc </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>+10 从第10行开始，分页显示指定的文本文件内容</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">frost@frost-virtual-machine:~/linuxcommandtry$ more +10 ~/.bashrc </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">为霜</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/12/20/linux/basical%20instruction2/">http://example.com/2023/12/20/linux/basical instruction2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">荒岛</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/linux/">linux</a></div><div class="post_share"><div class="social-share" data-image="/img/lm.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/loading.gif" data-original="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/12/21/linux/basical%20instruction3/" title="基础命令3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">基础命令3</div></div></a></div><div class="next-post pull-right"><a href="/2023/12/20/linux/basical%20instruction1/" title="基础命令1"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">基础命令1</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/12/20/linux/basical%20instruction1/" title="基础命令1"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-20</div><div class="title">基础命令1</div></div></a></div><div><a href="/2023/12/21/linux/basical%20instruction3/" title="基础命令3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-21</div><div class="title">基础命令3</div></div></a></div><div><a href="/2023/12/22/linux/basical%20instruction4/basical%20instruction4/" title="基础命令4"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-22</div><div class="title">基础命令4</div></div></a></div><div><a href="/2024/01/19/linux/basical%20instruction5/basical%20instruction5/" title="基础命令5"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-19</div><div class="title">基础命令5</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/loading.gif" data-original="/img/lm.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">为霜</div><div class="author-info__description">履霜 坚冰至</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/frostinf"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/frostinf" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1875401218@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E5%8F%96%E8%B7%AF%E5%BE%84%E7%9B%AE%E5%BD%95%E9%83%A8%E5%88%86%E5%91%BD%E4%BB%A4%EF%BC%9Adirname"><span class="toc-number">1.</span> <span class="toc-text">提取路径目录部分命令：dirname</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E5%91%BD%E4%BB%A4%EF%BC%9Achattr-lsattr"><span class="toc-number">2.</span> <span class="toc-text">修改_查看文件属性命令：chattr_lsattr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%86%E5%88%AB%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E5%91%BD%E4%BB%A4%EF%BC%9Afile"><span class="toc-number">3.</span> <span class="toc-text">识别文件类型命令：file</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%92%8C%E6%A0%A1%E9%AA%8C%E6%96%87%E4%BB%B6%E7%9A%84md5%E5%80%BC%E5%91%BD%E4%BB%A4%EF%BC%9Amd5sum"><span class="toc-number">4.</span> <span class="toc-text">生成和校验文件的md5值命令：md5sum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E7%9B%AE%E5%BD%95%E6%88%96%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4%EF%BC%9Afind"><span class="toc-number">5.</span> <span class="toc-text">查找目录或文件命令：find</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E5%91%BD%E4%BB%A4%E4%BD%8D%E7%BD%AE%E5%91%BD%E4%BB%A4%EF%BC%9Awhich"><span class="toc-number">6.</span> <span class="toc-text">搜索命令位置命令：which</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4%EF%BC%9Awhereis"><span class="toc-number">7.</span> <span class="toc-text">查找文件命令：whereis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E7%AC%A6%E5%90%88%E6%9D%A1%E4%BB%B6%E7%9A%84%E6%96%87%E6%A1%A3%E5%91%BD%E4%BB%A4%EF%BC%9Alocate"><span class="toc-number">8.</span> <span class="toc-text">查找符合条件的文档命令：locate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E6%96%87%E4%BB%B6%E6%89%80%E5%B1%9E%E7%94%A8%E6%88%B7%E6%88%96%E7%BB%84%E5%91%BD%E4%BB%A4%EF%BC%9Achown"><span class="toc-number">9.</span> <span class="toc-text">改变文件所属用户或组命令：chown</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95%E6%89%80%E5%B1%9E%E7%BB%84%EF%BC%9Achgrp"><span class="toc-number">10.</span> <span class="toc-text">改变文件或目录所属组：chgrp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E7%94%A8%E6%88%B7%E5%AF%B9%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95%E7%9A%84%E6%9D%83%E9%99%90%EF%BC%9Achmod"><span class="toc-number">11.</span> <span class="toc-text">改变用户对文件或目录的权限：chmod</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7%EF%BC%9Agrep"><span class="toc-number">12.</span> <span class="toc-text">文本搜索工具：grep</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%86%85%E6%9F%A5%E6%89%BE%E6%8C%87%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%91%BD%E4%BB%A4%EF%BC%9Aegrep"><span class="toc-number">13.</span> <span class="toc-text">文件内查找指定字符串命令：egrep</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%91%BD%E4%BB%A4%EF%BC%9Acat"><span class="toc-number">14.</span> <span class="toc-text">查看文本内容命令：cat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%90%E9%A1%B5%E9%98%85%E8%AF%BB%E6%96%87%E6%9C%AC%E5%91%BD%E4%BB%A4%EF%BC%9Amore"><span class="toc-number">15.</span> <span class="toc-text">逐页阅读文本命令：more</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/29/hello-world/" title="Hello World">Hello World</a><time datetime="2024-01-29T07:44:15.468Z" title="发表于 2024-01-29 15:44:15">2024-01-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/29/C++/C++%20improving%20programming/C++%20improving%20programming/" title="C++ improving programming">C++ improving programming</a><time datetime="2024-01-29T06:20:29.000Z" title="发表于 2024-01-29 14:20:29">2024-01-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/29/C++/C++%20core%20programming/C++%20core%20programming/" title="C++ core programming">C++ core programming</a><time datetime="2024-01-29T06:19:29.000Z" title="发表于 2024-01-29 14:19:29">2024-01-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/29/C++/C++%20Basics/C++%20Basics/" title="C++ Basics">C++ Basics</a><time datetime="2024-01-29T06:09:29.000Z" title="发表于 2024-01-29 14:09:29">2024-01-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/25/mysql/mysql/" title="mysql">mysql</a><time datetime="2024-01-25T13:29:09.000Z" title="发表于 2024-01-25 21:29:09">2024-01-25</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/zl.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 为霜</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body></html>
